@@ -139,7 +139,7 @@
       padding: 0 1.25rem;
     }
 
-    /* === STICKY HEADER WITH CERBERUS LOGO === */
+    /* === STICKY HEADER WITH CENTERED CERBERUS LOGO === */
 
     .hb-header {
       position: sticky;
@@ -155,6 +155,16 @@
       box-shadow:
         0 0 18px rgba(0,0,0,0.9),
         inset 0 -1px 0 rgba(202,52,0,0.3);
+      transform: translateY(-18px);
+      opacity: 0;
+      transition:
+        transform 0.55s cubic-bezier(0.22,0.9,0.35,1.1),
+        opacity 0.55s ease;
+    }
+
+    .hb-header.revealed {
+      transform: translateY(0);
+      opacity: 1;
     }
 
     .hb-header.scrolled {
@@ -167,14 +177,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.55rem 0;
+      gap: 1.25rem;
+      padding: 0.4rem 0;
       font-size: 0.95rem;
     }
 
-    .nav-left {
+    .nav-center {
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      text-align: center;
     }
 
     .nav-logo-link {
@@ -184,24 +196,34 @@
     }
 
     .logo-img {
-      height: 56px;
+      height: 90px; /* bigger Cerberus */
       width: auto;
       display: block;
-      filter: drop-shadow(0 0 10px rgba(202,52,0,0.7));
+      filter: drop-shadow(0 0 12px rgba(202,52,0,0.8));
       transition:
+        height 0.25s ease,
         transform 0.25s ease,
-        filter 0.25s ease,
-        height 0.25s ease;
+        filter 0.25s ease;
     }
 
     .hb-header.scrolled .logo-img {
-      height: 44px;
-      filter: drop-shadow(0 0 6px rgba(202,52,0,0.6));
+      height: 68px;
+      filter: drop-shadow(0 0 8px rgba(202,52,0,0.7));
     }
 
-    .nav-logo-link:hover .logo-img {
-      transform: translateY(-1px) scale(1.02);
-      filter: drop-shadow(0 0 14px rgba(202,52,0,0.9));
+    .logo-img:hover {
+      animation: logoFlame 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoFlame {
+      0% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 10px rgba(202,52,0,0.8));
+      }
+      100% {
+        transform: translateY(-1px) scale(1.03);
+        filter: drop-shadow(0 0 18px rgba(202,52,0,1));
+      }
     }
 
     .nav-brand-text .brand-name {
@@ -218,13 +240,13 @@
       color: var(--muted);
     }
 
-    .nav-links {
+    .nav-links-left {
       display: flex;
       gap: 1.4rem;
       font-size: 0.85rem;
     }
 
-    .nav-links a {
+    .nav-links-left a {
       position: relative;
       text-transform: uppercase;
       letter-spacing: 0.14em;
@@ -233,7 +255,7 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a::after {
+    .nav-links-left a::after {
       content: "";
       position: absolute;
       left: 0;
@@ -249,13 +271,18 @@
         opacity 0.22s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links-left a:hover {
       color: var(--gold);
     }
 
-    .nav-links a:hover::after {
+    .nav-links-left a:hover::after {
       width: 100%;
       opacity: 1;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
     }
 
     .nav-cta {
@@ -275,6 +302,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      white-space: nowrap;
     }
 
     .nav-cta::after {
@@ -452,7 +480,6 @@
       margin-bottom: 0.2rem;
     }
 
-    /* section title + secret star wrapper */
     .section-title-row {
       display: flex;
       align-items: center;
@@ -471,7 +498,7 @@
       max-width: 32rem;
     }
 
-    /* Secret star (ghost hotspot) */
+    /* Secret star (hover hotspot) */
     .secret-star {
       width: 18px;
       height: 18px;
@@ -486,6 +513,7 @@
       opacity: 0.45;
       box-shadow: 0 0 6px rgba(245,201,122,0.4);
       transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      background: radial-gradient(circle at top, rgba(245,201,122,0.2), transparent 60%);
     }
     .secret-star span {
       transform: translateY(-0.5px);
@@ -511,6 +539,8 @@
       display: none;
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(8px);
     }
     .secret-menu::before {
       content: "";
@@ -797,17 +827,17 @@
       .summon-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .nav-links {
+      .nav-links-left {
         display: none;
       }
-      .hero {
-        padding-top: 2.5rem;
+      .nav {
+        justify-content: space-between;
       }
       .logo-img {
-        height: 48px;
+        height: 80px;
       }
       .hb-header.scrolled .logo-img {
-        height: 40px;
+        height: 62px;
       }
       .calendar-wrap {
         height: 380px;
@@ -831,25 +861,29 @@
     🔥 Hades Bites Wickedly • COMING SOON • Feast in the Underworld 🔥
   </div>
 
-  <!-- HEADER WITH CERBERUS LOGO -->
+  <!-- HEADER WITH CENTERED CERBERUS LOGO -->
   <header class="hb-header">
     <div class="container">
       <div class="nav">
-        <div class="nav-left">
+        <nav class="nav-links-left">
+          <a href="#menu">Menu</a>
+          <a href="#about">Lore</a>
+        </nav>
+
+        <div class="nav-center">
           <a href="#top" class="nav-logo-link">
-            <!-- IMPORTANT: rename this to match your actual logo file & path -->
-            <img src="HadesBitesWickedly.png" alt="Hades Bites Wickedly" class="logo-img">
+            <!-- Make sure this file name & path matches your actual logo -->
+            <img src="HadesBitesWickedly.png" alt="Hades Bites Wickedly Logo" class="logo-img">
           </a>
           <div class="nav-brand-text">
             <div class="brand-name">Hades Bites Wickedly</div>
             <div class="brand-subtitle">Feast in the Underworld</div>
           </div>
         </div>
-        <nav class="nav-links">
-          <a href="#menu">Menu</a>
-          <a href="#about">Lore</a>
-        </nav>
-        <a href="#contact" class="nav-cta">Summon the Hound</a>
+
+        <div class="nav-right">
+          <a href="#contact" class="nav-cta">Summon the Hound</a>
+        </div>
       </div>
     </div>
   </header>
@@ -1178,16 +1212,19 @@
                 </div>
 
                 <div class="menu-item">
-                  <div class="menu-item-name">
-                    Obsidian Cold Brew
-                  </div>
-                  <div class="menu-item-desc">
-                    Dark roast cold brew over ice, optionally sweetened with ember syrup or oat milk.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">DF option</div>
-                  </div>
-                </div>
+  <div class="menu-item-name">
+    Cerberus Hot Chocolate
+  </div>
+  <div class="menu-item-desc">
+    Rich, three-headed hot chocolate with layers of dark, milk, and white cocoa.
+    Topped with flame-toasted marshmallow and ember drizzle. Offered during the
+    colder seasons (fall & winter).
+  </div>
+  <div class="menu-badges">
+    <div class="badge">Seasonal</div>
+    <div class="badge">DF option</div>
+  </div>
+</div>
 
               </div>
             </div>
@@ -1295,7 +1332,7 @@
               Choose your time directly on the calendar. Once confirmed, you’ll receive an email from our booking system.
             </p>
             <div class="calendar-wrap">
-              <!-- IMPORTANT: replace this src with the exact Setmore embed URL they give you -->
+              <!-- IMPORTANT: replace this src with the exact Setmore embed URL they give you if different -->
               <iframe
                 src="https://hadesbiteswickedly.setmore.com/houndofhades"
                 loading="lazy"
@@ -1352,31 +1389,63 @@
       </div>
     </div>
     <script>
-      // Year + loader + header scroll
       window.addEventListener('load', function () {
+        // year
         var yearSpan = document.getElementById('year');
         if (yearSpan) {
           yearSpan.textContent = new Date().getFullYear();
         }
+        // hide loader
         document.body.classList.add('loaded');
+        // reveal header
+        var header = document.querySelector('.hb-header');
+        if (header) {
+          header.classList.add('revealed');
+        }
       });
 
+      // shrink header on scroll
       window.addEventListener('scroll', function () {
         const header = document.querySelector('.hb-header');
         if (!header) return;
         header.classList.toggle('scrolled', window.scrollY > 20);
       });
 
-      // Secret menu toggle (ghost hotspot star)
+      // Secret menu hover / tap logic
       (function () {
         const star = document.getElementById('secretStar');
         const secret = document.getElementById('secretMenu');
         if (!star || !secret) return;
 
-        star.addEventListener('click', function () {
+        let hideTimeout;
+
+        function showSecret() {
+          clearTimeout(hideTimeout);
+          secret.classList.add('visible');
+          star.classList.add('active');
+          secret.setAttribute('aria-hidden', 'false');
+        }
+
+        function scheduleHide() {
+          hideTimeout = setTimeout(function () {
+            secret.classList.remove('visible');
+            star.classList.remove('active');
+            secret.setAttribute('aria-hidden', 'true');
+          }, 200);
+        }
+
+        // Hover support (desktop)
+        star.addEventListener('mouseenter', showSecret);
+        star.addEventListener('mouseleave', scheduleHide);
+        secret.addEventListener('mouseenter', showSecret);
+        secret.addEventListener('mouseleave', scheduleHide);
+
+        // Tap/click support (mobile)
+        star.addEventListener('click', function (e) {
+          e.preventDefault();
           const visible = secret.classList.toggle('visible');
           star.classList.toggle('active', visible);
-          secret.setAttribute('aria-hidden', !visible);
+          secret.setAttribute('aria-hidden', String(!visible));
         });
       })();
     </script>
