@@ -77,4 +77,1087 @@
       margin-bottom: 0.4rem;
     }
     .loader-text-sub {
-      font-size: 0
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    body.loaded .loader-overlay {
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+    }
+
+    @keyframes loaderPulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(202,52,0,0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 0 26px rgba(202,52,0,0.9); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(202,52,0,0.4); }
+    }
+
+    /* Coming Soon Banner with flicker */
+    .coming-soon-banner {
+      background: linear-gradient(to right, #7e0f1d, #ca3400, #7e0f1d);
+      padding: 0.6rem 1rem;
+      text-align: center;
+      color: #f5e6dc;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(202,52,0,0.7);
+      position: relative;
+      overflow: hidden;
+      animation: flameFlicker 2.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes flameFlicker {
+      0% {
+        opacity: 0.88;
+        text-shadow: 0 0 6px rgba(0,0,0,0.8), 0 0 14px rgba(245,201,122,0.6);
+        transform: translateY(0);
+      }
+      40% {
+        opacity: 1;
+        text-shadow: 0 0 8px rgba(0,0,0,0.9), 0 0 18px rgba(245,201,122,0.9);
+        transform: translateY(-0.5px);
+      }
+      70% {
+        opacity: 0.93;
+        text-shadow: 0 0 5px rgba(0,0,0,0.7), 0 0 12px rgba(245,201,122,0.5);
+        transform: translateY(0.5px);
+      }
+      100% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(0,0,0,0.95), 0 0 22px rgba(245,201,122,1);
+        transform: translateY(-0.4px);
+      }
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* === STICKY HEADER WITH CERBERUS LOGO === */
+
+    .hb-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(
+        to right,
+        rgba(5, 3, 8, 0.96),
+        rgba(7, 1, 1, 0.96)
+      );
+      border-bottom: 1px solid rgba(245,201,122,0.22);
+      backdrop-filter: blur(10px);
+      box-shadow:
+        0 0 18px rgba(0,0,0,0.9),
+        inset 0 -1px 0 rgba(202,52,0,0.3);
+    }
+
+    .hb-header.scrolled {
+      box-shadow:
+        0 0 26px rgba(0,0,0,1),
+        0 0 30px rgba(202,52,0,0.55);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0;
+      font-size: 0.95rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-img {
+      height: 56px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 0 10px rgba(202,52,0,0.7));
+      transition:
+        transform 0.25s ease,
+        filter 0.25s ease,
+        height 0.25s ease;
+    }
+
+    .hb-header.scrolled .logo-img {
+      height: 44px;
+      filter: drop-shadow(0 0 6px rgba(202,52,0,0.6));
+    }
+
+    .nav-logo-link:hover .logo-img {
+      transform: translateY(-1px) scale(1.02);
+      filter: drop-shadow(0 0 14px rgba(202,52,0,0.9));
+    }
+
+    .nav-brand-text .brand-name {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-text .brand-subtitle {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      padding-bottom: 0.15rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      height: 2px;
+      width: 0;
+      border-radius: 999px;
+      background: linear-gradient(to right, #f5c97a, #ca3400, #7e0f1d);
+      box-shadow: 0 0 10px rgba(202,52,0,0.8);
+      opacity: 0;
+      transition:
+        width 0.22s ease,
+        opacity 0.22s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+      opacity: 1;
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      border: 1px solid rgba(245,201,122,0.85);
+      padding: 0.45rem 1.2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background:
+        radial-gradient(circle at top left, rgba(202,52,0,0.9), transparent),
+        radial-gradient(circle at bottom right, rgba(126,15,29,0.9), rgba(5,3,8,0.95));
+      color: #fff;
+      box-shadow:
+        0 0 16px rgba(202,52,0,0.9),
+        0 0 4px rgba(245,201,122,0.8);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-cta::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0% 50%, rgba(245,201,122,0.35), transparent 55%);
+      transform: translateX(-120%);
+      transition: transform 0.35s ease-out;
+      pointer-events: none;
+    }
+
+    .nav-cta:hover::after {
+      transform: translateX(120%);
+    }
+
+    .nav-cta:hover {
+      box-shadow:
+        0 0 22px rgba(202,52,0,1),
+        0 0 10px rgba(245,201,122,0.9);
+    }
+
+    main {
+      padding-bottom: 4rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: 0.7rem;
+      color: var(--gold);
+      opacity: 0.9;
+      margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 18px rgba(0,0,0,0.8);
+    }
+    .hero-title span {
+      color: var(--accent);
+    }
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 32rem;
+      margin-bottom: 1.4rem;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.6rem;
+    }
+    .tag {
+      border-radius: 999px;
+      border: 1px solid rgba(245,201,122,0.3);
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #fff;
+      box-shadow: 0 0 18px rgba(202,52,0,0.7);
+    }
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+    .btn-ghost {
+      border-color: rgba(245,201,122,0.5);
+      color: var(--gold);
+      background: rgba(5,3,8,0.6);
+    }
+    .btn-ghost:hover {
+      background: rgba(245,201,122,0.08);
+    }
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .hero-art {
+      border-radius: 24px;
+      border: 1px solid rgba(245,201,122,0.3);
+      padding: 1px;
+      background: radial-gradient(circle at top, rgba(202,52,0,0.8), #050308);
+      box-shadow:
+        0 0 32px rgba(202,52,0,0.45),
+        0 0 80px rgba(0,0,0,0.9);
+    }
+    .hero-art-inner {
+      border-radius: 22px;
+      background: radial-gradient(circle at bottom, #050308 0, #140308 40%, #050308 100%);
+      padding: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .hero-art-title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .hero-art-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+    .hero-card {
+      border-radius: 16px;
+      border: 1px solid rgba(245,201,122,0.25);
+      padding: 0.6rem 0.7rem;
+      background: radial-gradient(circle at top left, rgba(126,15,29,0.6), rgba(5,3,8,0.9));
+    }
+    .hero-card h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .hero-card p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(245,201,122,0.12);
+    }
+    .section-header {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .section-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.7rem;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .section-title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    /* Menu */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+    }
+    .menu-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .menu-group-title {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.75rem;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .menu-item {
+      padding: 0.55rem 0;
+      border-bottom: 1px dashed rgba(245,201,122,0.25);
+    }
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+    .menu-item-name {
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+    .menu-item-name span {
+      color: var(--gold);
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+    .menu-item-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+    .menu-badges {
+      margin-top: 0.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      font-size: 0.7rem;
+    }
+    .badge {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.05rem 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .menu-art {
+      border-radius: 20px;
+      border: 1px solid rgba(245,201,122,0.25);
+      padding: 1rem;
+      background: radial-gradient(circle at top, rgba(202,52,0,0.7), #050308);
+      font-size: 0.8rem;
+    }
+    .menu-art h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .menu-art p {
+      color: var(--muted);
+    }
+    .menu-spell {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-style: italic;
+      margin-top: 0.5rem;
+      color: #f8e8c4;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+    }
+    .about-box {
+      border-radius: 18px;
+      border: 1px solid rgba(245,201,122,0.25);
+      padding: 1.1rem 1.2rem;
+      background: radial-gradient(circle at top left, rgba(126,15,29,0.6), rgba(5,3,8,0.95));
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .about-box strong {
+      color: var(--gold);
+    }
+    .about-label {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.75rem;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+    .about-quote {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-style: italic;
+      margin-top: 0.7rem;
+      color: #f8e8c4;
+    }
+    .about-highlight {
+      border-radius: 16px;
+      border: 1px dashed rgba(245,201,122,0.4);
+      padding: 0.9rem 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Contact / Summon */
+    .contact {
+      background: radial-gradient(circle at top, #15020b, #050308);
+    }
+    .summon-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 2rem;
+    }
+    .summon-form {
+      border-radius: 20px;
+      border: 1px solid rgba(245,201,122,0.25);
+      padding: 1.3rem 1.4rem;
+      background: radial-gradient(circle at top left, rgba(126,15,29,0.7), rgba(5,3,8,0.96));
+      box-shadow: 0 0 24px rgba(0,0,0,0.9);
+    }
+    .form-row {
+      margin-bottom: 0.8rem;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    input, textarea, select {
+      width: 100%;
+      background: rgba(5,3,8,0.9);
+      border-radius: 10px;
+      border: 1px solid rgba(245,201,122,0.3);
+      padding: 0.45rem 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(202,52,0,0.6);
+    }
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .form-helper {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .summon-side {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .summon-side h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .summon-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0.6rem;
+    }
+    .summon-list li::before {
+      content: "✶";
+      color: var(--accent);
+      margin-right: 0.4rem;
+    }
+    .summon-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Calendar panel */
+    .summon-calendar {
+      border-radius: 20px;
+      border: 1px solid rgba(245,201,122,0.25);
+      padding: 1.3rem 1.4rem;
+      background: radial-gradient(circle at top, rgba(202,52,0,0.7), #050308);
+      box-shadow: 0 0 24px rgba(0,0,0,0.9);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .summon-calendar h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .calendar-wrap {
+      margin-top: 0.6rem;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #050308;
+      border: 1px solid rgba(245,201,122,0.3);
+      height: 480px;
+    }
+    .calendar-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    footer {
+      border-top: 1px solid rgba(245,201,122,0.18);
+      padding: 1rem 0 1.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    @media (max-width: 840px) {
+      .hero-grid,
+      .menu-grid,
+      .about-grid,
+      .summon-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding-top: 2.5rem;
+      }
+      .logo-img {
+        height: 48px;
+      }
+      .hb-header.scrolled .logo-img {
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading overlay -->
+  <div class="loader-overlay">
+    <div class="loader-inner">
+      <div class="loader-symbol">HB</div>
+      <div class="loader-text-main">Summoning the Underworld Kitchen…</div>
+      <div class="loader-text-sub">Please wait, mortal.</div>
+    </div>
+  </div>
+
+  <!-- COMING SOON BANNER -->
+  <div class="coming-soon-banner">
+    🔥 Hades Bites Wickedly • COMING SOON • Feast in the Underworld 🔥
+  </div>
+
+  <!-- HEADER WITH CERBERUS LOGO -->
+  <header class="hb-header">
+    <div class="container">
+      <div class="nav">
+        <div class="nav-left">
+          <a href="#top" class="nav-logo-link">
+            <!-- Make sure this file exists next to the HTML -->
+            <img src="hades-cerberus-logo.jpg" alt="Hades Bites Wickedly Logo" class="logo-img">
+          </a>
+          <div class="nav-brand-text">
+            <div class="brand-name">Hades Bites Wickedly</div>
+            <div class="brand-subtitle">Feast in the Underworld</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#menu">Menu</a>
+          <a href="#about">Lore</a>
+          <a href="#contact">Summon</a>
+        </nav>
+        <a href="#contact" class="nav-cta">Summon the Hound</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-eyebrow">Underworld food truck • roaming realm of mortals</div>
+            <h1 class="hero-title">
+              <span>Hades Bites Wickedly</span><br>
+              Eat wickedly. Feast in the Underworld.
+            </h1>
+            <p class="hero-subtitle">
+              An infernal food truck serving sliders, infernal mac, bites, bowls, and underworld elixirs.
+              Dark, witchy, family-friendly, and allergy-aware — welcome to the Underworld Kitchen.
+            </p>
+            <div class="hero-tags">
+              <div class="tag">Sliders</div>
+              <div class="tag">Infernal Mac</div>
+              <div class="tag">Witchy Vibes</div>
+              <div class="tag">Allergy Friendly Options</div>
+            </div>
+            <div class="hero-actions">
+              <a href="#menu" class="btn btn-primary">View the Menu</a>
+              <a href="#contact" class="btn btn-ghost">Summon for Events</a>
+              <div class="hero-note">
+                GF / DF / vegan-friendly paths through the Underworld are available.
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-art">
+            <div class="hero-art-inner">
+              <div class="hero-art-title">Tonight in the Underworld</div>
+              <div class="hero-art-grid">
+                <div class="hero-card">
+                  <h4>Infernal Favorites</h4>
+                  <p>Cerberus Sliders • Acheron Mac • Ashen Bites • The Void Bowl.</p>
+                </div>
+                <div class="hero-card">
+                  <h4>Wickedly Friendly</h4>
+                  <p>Kid options, mild paths, and clearly marked GF/DF/V-friendly choices.</p>
+                </div>
+                <div class="hero-card">
+                  <h4>Summon the Truck</h4>
+                  <p>Private events, festivals, night markets, and gatherings of mortals.</p>
+                </div>
+                <div class="hero-card">
+                  <h4>The Hound of Hades</h4>
+                  <p>The Underworld Kitchen is led by Heather, known only as The Hound of Hades.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">The Wicked Feast</div>
+          <h2 class="section-title">Underworld Menu</h2>
+          <p class="section-subtitle">
+            A menu of infernal comfort food with options for mortals of every kind — kids, picky eaters, spice fiends, and those walking gentler paths.
+          </p>
+        </div>
+
+        <div class="menu-grid">
+          <div>
+            <div class="menu-columns">
+              <div>
+                <div class="menu-group-title">Mains</div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Cerberus Sliders
+                    <span>Signature</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Three wicked mini burgers with molten cheese, Cerberus seasoning, and Underworld aioli.
+                    Also available plain for mortal palates.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Kid-friendly option</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Acheron Mac
+                    <span>Infernal Mac</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Smoky, creamy mac with ember-seasoned cheese. Choose Mortal (plain), Hellfire (spicy), or GF/DF substitutes.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">GF available</div>
+                    <div class="badge">DF option</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Ashen Bites
+                    <span>Chicken or Tofu</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Crispy bites of chicken or tofu served plain, with mild Ember Honey, or drenched in Hellfire glaze.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Vegan option</div>
+                    <div class="badge">GF breading option</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    The Void Bowl
+                    <span>Custom</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Rice or cauliflower base with charred veggies and your choice of chicken, pork, tofu, or full-veggie.
+                    Sauce intensity from “Mortal” to “Infernal”.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">GF friendly</div>
+                    <div class="badge">Vegan option</div>
+                    <div class="badge">Dairy-free option</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Minotaur Nachos
+                    <span>Shareable</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Black or classic chips loaded with ember cheese, protein, and optional Infernal drizzle.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">GF chips option</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="menu-group-title">Sides & Sweets</div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Cinder Fries
+                    <span>or Mortal Fries</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Ember-spiced or plain fries with Underworld aioli or classic dipping sauces.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">GF</div>
+                    <div class="badge">Kid-friendly option</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Ember Mac Cups
+                    <span>Side</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Single-serve cups of mac for kids, snackers, or those dabbling lightly in the flames.
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Elysian Orchard Fruit Cups
+                  </div>
+                  <div class="menu-item-desc">
+                    Fresh seasonal fruit gathered from the “Elysian fields” beyond the Underworld. Light, bright, and halo-approved.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Vegan</div>
+                    <div class="badge">GF</div>
+                    <div class="badge">DF</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Underworld Churros
+                  </div>
+                  <div class="menu-item-desc">
+                    Cinnamon-ash sugar churros with optional flame caramel dip.
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Cerberus Chocolate Skulls
+                  </div>
+                  <div class="menu-item-desc">
+                    Dark chocolate skulls, available in classic or gently spiced for brave souls.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spellbook-style panel -->
+          <aside class="menu-art">
+            <h4>The Spellbook of Hunger</h4>
+            <p>
+              Each dish is crafted with care for mortals of all realms: from little wraiths and cautious palates
+              to spice-daring souls who crave the full heat of Hellfire.
+            </p>
+            <p class="menu-spell">
+              “Speak your allergies and your preferred level of flame — the Underworld Kitchen listens.”
+            </p>
+            <p style="margin-top:0.7rem;">
+              Look for the sigils:<br>
+              ✶ GF = Gluten-friendly paths<br>
+              ✶ DF = Dairy-free options<br>
+              ✶ V = Vegan-friendly feasts<br>
+              ✶ Mild, Wicked, or Infernal spice tiers
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Lore -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Lore of the Underworld Kitchen</div>
+          <h2 class="section-title">About the Hound of Hades</h2>
+          <p class="section-subtitle">
+            A food truck born from flame, shadow, and a long-standing dream — built for those who crave something a little darker, a little witchier, and a lot more flavorful.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box">
+            <span class="about-label">The Infernal Founder</span>
+            <p>
+              Hades Bites Wickedly is helmed by <strong>Heather</strong>, known in the realm of the brand as
+              <strong>The Hound of Hades</strong> — guardian of flavor, keeper of the ember flame, and alchemist of wicked comfort food.
+            </p>
+            <p style="margin-top:0.5rem;">
+              With a love for witchy aesthetics, fantasy worlds, and soul-warming food, the Underworld Kitchen balances
+              <strong>dark, immersive storytelling</strong> with <strong>real-world accessibility</strong>:
+              kid-friendly options, allergy-aware offerings, and flexible heat levels for every mortal.
+            </p>
+            <div class="about-quote">
+              “Everyone deserves a little magic with their meal — whether they walk in darkness or in daylight.”
+            </div>
+          </div>
+
+          <div class="about-highlight">
+            <span class="about-label">What the Underworld Stands For</span>
+            <p>
+              ✶ <strong>All are welcome at the cauldron.</strong> From picky eaters and cautious kids to spice fiends and goth foodies — there is a path through the Underworld for you.
+            </p>
+            <p style="margin-top:0.4rem;">
+              ✶ <strong>Allergy-aware by design.</strong> Key items can be made gluten-friendly, dairy-free, or vegan-friendly, with clear communication at the window.
+            </p>
+            <p style="margin-top:0.4rem;">
+              ✶ <strong>Story-driven, heart-led food.</strong> Every dish, name, and visual is part of a living mythology built to be fun, immersive, and unforgettable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Summon -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Summon the Underworld Kitchen</div>
+          <h2 class="section-title">Book Hades Bites Wickedly</h2>
+          <p class="section-subtitle">
+            Festivals, night markets, private parties, spooky season events, weddings with a dark twist — book your date on the calendar or send a general inquiry below.
+          </p>
+        </div>
+
+        <div class="summon-grid">
+          <!-- Calendar -->
+          <div class="summon-calendar">
+            <h4>Claim Your Date in the Underworld</h4>
+            <p class="form-helper">
+              Pick your date and time directly on the calendar. Once confirmed, you’ll get an email from our booking system.
+            </p>
+            <div class="calendar-wrap">
+              <iframe
+                src="https://hadesbiteswickedly.setmore.com/houndofhades"
+                loading="lazy"
+                scrolling="yes"
+                frameborder="0"
+                title="Hades Bites Wickedly booking calendar">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- General Inquiry Form + contact info -->
+          <form class="summon-form">
+            <div class="form-row">
+              <label for="name">Your Name</label>
+              <input id="name" type="text" placeholder="Mortal, coven, or event organizer name">
+            </div>
+            <div class="form-row">
+              <label for="email">Contact Email</label>
+              <input id="email" type="email" placeholder="you@example.com">
+            </div>
+            <div class="form-row">
+              <label for="eventType">Type of Summoning</label>
+              <select id="eventType">
+                <option>Festival or Market</option>
+                <option>Private Party</option>
+                <option>Wedding or Reception</option>
+                <option>Corporate or School Event</option>
+                <option>Other Gathering of Mortals</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="date">Desired Date</label>
+              <input id="date" type="text" placeholder="Approximate date or date range">
+              <div class="form-helper">If you booked via the calendar, you can use this for backup or extra details.</div>
+            </div>
+            <div class="form-row">
+              <label for="details">Message to the Hound of Hades</label>
+              <textarea id="details" placeholder="Guest count, vibe, dietary needs, and any details you’d like to share."></textarea>
+            </div>
+            <div class="form-row">
+              <button type="submit" class="btn btn-primary" style="width:100%; margin-top:0.3rem;">
+                Send General Inquiry
+              </button>
+              <div class="form-helper">
+                This is a sample form. Connect it to your email service or booking system when you’re ready.
+              </div>
+            </div>
+
+            <div class="summon-side" style="margin-top:1rem;">
+              <h4>Other Ways to Reach the Underworld</h4>
+              <ul class="summon-list">
+                <li><strong>Email:</strong> <a href="mailto:HadesBitesWickedly@gmail.com">HadesBitesWickedly@gmail.com</a></li>
+                <li><strong>Phone:</strong> <a href="tel:15409448898">540-944-8898</a></li>
+                <li><strong>Instagram:</strong> <a href="https://instagram.com/hadesbiteswickedly" target="_blank">@hadesbiteswickedly</a></li>
+                <li><strong>TikTok:</strong> <a href="https://www.tiktok.com/@hadesbiteswickedly" target="_blank">@hadesbiteswickedly</a></li>
+              </ul>
+              <p class="summon-note">
+                When the Hound of Hades is not roaming the mortal realm, the truck is in the workshop — reforging menus, seasoning spells, and planning the next appearance.
+              </p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="year"></span> Hades Bites Wickedly. All rights reserved.</div>
+        <div class="footer-links">
+          <span>Eat wickedly.</span>
+          <span>Feast in the Underworld.</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Year + loader + header scroll
+      window.addEventListener('load', function () {
+        var yearSpan = document.getElementById('year');
+        if (yearSpan) {
+          yearSpan.textContent = new Date().getFullYear();
+        }
+        document.body.classList.add('loaded');
+      });
+
+      window.addEventListener('scroll', function () {
+        const header = document.querySelector('.hb-header');
+        if (!header) return;
+        header.classList.toggle('scrolled', window.scrollY > 20);
+      });
+    </script>
+  </footer>
+</body>
+</html>
