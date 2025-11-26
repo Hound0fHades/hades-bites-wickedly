@@ -584,6 +584,84 @@
       gap: 0.8rem;
     }
 
+    /* Secret rune + secret menu */
+    .secret-rune-button {
+      position: fixed;
+      bottom: 1.3rem;
+      right: 1.3rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 1px solid rgba(245,201,122,0.7);
+      background: radial-gradient(circle at top, rgba(202,52,0,0.9), #050308);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(202,52,0,0.8);
+      z-index: 60;
+      animation: secretRunePulse 2.6s ease-in-out infinite;
+    }
+    .secret-rune-button:hover {
+      box-shadow: 0 0 26px rgba(245,201,122,0.9);
+      transform: translateY(-1px);
+    }
+    .secret-rune-button .rune-symbol {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.3rem;
+      color: #f8e8c4;
+    }
+    @keyframes secretRunePulse {
+      0% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.9; }
+    }
+
+    .secret-menu-panel {
+      position: fixed;
+      bottom: 4.6rem;
+      right: 1.3rem;
+      max-width: 320px;
+      border-radius: 18px;
+      border: 1px solid rgba(245,201,122,0.5);
+      background: radial-gradient(circle at top left, rgba(126,15,29,0.9), rgba(5,3,8,0.98));
+      box-shadow: 0 0 26px rgba(0,0,0,0.95);
+      padding: 0.9rem 1rem;
+      font-size: 0.8rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 59;
+    }
+    .secret-menu-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .secret-menu-header {
+      margin-bottom: 0.35rem;
+    }
+    .secret-menu-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.65rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .secret-menu-header h3 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.95rem;
+      color: #fdf3e0;
+    }
+    .secret-menu-note {
+      margin-top: 0.45rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
     @media (max-width: 840px) {
       .hero-grid,
       .menu-grid,
@@ -650,7 +728,7 @@
               Eat wickedly. Feast in the Underworld.
             </h1>
             <p class="hero-subtitle">
-              An infernal food truck serving sliders, infernal mac, bites, bowls, and underworld elixirs.
+              An infernal food truck serving sliders, infernal mac, bites, bowls, sweets, elixirs, and wickedly simple combos.
               Dark, witchy, family-friendly, and allergy-aware — welcome to the Underworld Kitchen.
             </p>
             <div class="hero-tags">
@@ -703,13 +781,14 @@
           <div class="section-eyebrow">The Wicked Feast</div>
           <h2 class="section-title">Underworld Menu</h2>
           <p class="section-subtitle">
-            A menu of infernal comfort food with options for mortals of every kind — kids, picky eaters, spice fiends, and those walking gentler paths.
+            Infernal comfort food, shareable feasts, and underworld elixirs — with simple combos for kids, picky mortals, and spice fiends alike.
           </p>
         </div>
 
         <div class="menu-grid">
           <div>
             <div class="menu-columns">
+              <!-- Column 1: Mains -->
               <div>
                 <div class="menu-group-title">Mains</div>
 
@@ -785,8 +864,68 @@
                 </div>
               </div>
 
+              <!-- Column 2: Combos, Sides & Sweets, Drinks -->
               <div>
-                <div class="menu-group-title">Sides & Sweets</div>
+                <!-- Combos & Trays -->
+                <div class="menu-group-title">Combos & Trays</div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Cerberus Feast Combo
+                    <span>Sliders • Fries • Drink</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Two Cerberus Sliders (Mortal or Wicked), Cinder or Mortal Fries, and one Underworld elixir or soft drink.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Kid-friendly option</div>
+                    <div class="badge">Customizable</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Ashen Bites Platter
+                    <span>Bites • Fries • Sauce</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Basket of chicken or tofu Ashen Bites with Cinder Fries, Cerberus Lime Sauce, and your choice of Mortal, Wicked, or Infernal heat.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Vegan option</div>
+                    <div class="badge">GF option</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Void Walker Bowl Combo
+                    <span>Bowl • Fruit • Drink</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    One custom Void Bowl with your chosen protein, a side Elysian Orchard Fruit Cup, and any Underworld elixir or soft drink.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">GF friendly</div>
+                    <div class="badge">Vegan option</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Little Wraith Kid’s Meal
+                    <span>For Smaller Mortals</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Choice of Ember Mac Cup or plain Ashen Bites, Mortal Fries, small drink, and a tiny sweet from the Underworld.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Kid-friendly</div>
+                  </div>
+                </div>
+
+                <!-- Sides & Sweets -->
+                <div class="menu-group-title" style="margin-top:0.9rem;">Sides & Sweets</div>
 
                 <div class="menu-item">
                   <div class="menu-item-name">
@@ -831,7 +970,7 @@
                     Underworld Churros
                   </div>
                   <div class="menu-item-desc">
-                    Cinnamon-ash sugar churros with optional flame caramel dip.
+                    Cinnamon-ash sugar churros with optional flame caramel or dark chocolate dip.
                   </div>
                 </div>
 
@@ -843,6 +982,69 @@
                     Dark chocolate skulls, available in classic or gently spiced for brave souls.
                   </div>
                 </div>
+
+                <!-- Elixirs & Drinks -->
+                <div class="menu-group-title" style="margin-top:0.9rem;">Elixirs & Drinks</div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    River Styx Soda Flight
+                    <span>Three Mini Elixirs</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    A trio of sodas like Black Cherry Abyss, Blood Orange Glow, and Midnight Cola, served as a tasting flight from the Styx.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Caffeine-free options</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Elysian Orchard Fizz
+                    <span>Fruit Elixir</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Sparkling fruit elixir inspired by the orchard — think citrus, berry, or seasonal flavors. Sweet, bright, and non-alcoholic.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Vegan</div>
+                    <div class="badge">GF</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Underworld Brew
+                    <span>Tea or Lemonade</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Sweet or unsweet tea, or classic lemonade, served in mortal or large sizes for parched souls.
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Hades Zero Flame
+                    <span>Energy-Free Spark</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Zero-sugar sparkling drink for those who want a dark, fizzy jolt without added sugar.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Sugar-free</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Bottled Water
+                  </div>
+                  <div class="menu-item-desc">
+                    For mortals who need to cool the flames or walk the gentlest path.
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -862,7 +1064,8 @@
               ✶ GF = Gluten-friendly paths<br>
               ✶ DF = Dairy-free options<br>
               ✶ V = Vegan-friendly feasts<br>
-              ✶ Mild, Wicked, or Infernal spice tiers
+              ✶ Mild, Wicked, or Infernal spice tiers<br>
+              ✶ Kid-friendly = smaller, gentler portions
             </p>
           </aside>
         </div>
@@ -984,6 +1187,35 @@
     </section>
   </main>
 
+  <!-- Secret Rune Button -->
+  <button type="button" class="secret-rune-button" id="secretRune" aria-label="Open secret trial">
+    <span class="rune-symbol">𖤐</span>
+  </button>
+
+  <!-- Secret Menu Panel: Minotaur’s Challenge Platter ONLY -->
+  <div class="secret-menu-panel" id="secretMenuPanel">
+    <div class="secret-menu-header">
+      <span class="secret-menu-eyebrow">Secret Trial of the Underworld</span>
+      <h3>Minotaur’s Challenge Platter</h3>
+    </div>
+    <div class="menu-item" style="border-bottom:none; padding-top:0.15rem;">
+      <div class="menu-item-name">
+        Minotaur’s Challenge Platter
+        <span>Very Spicy • Shareable</span>
+      </div>
+      <div class="menu-item-desc">
+        A large, fire-forged feast featuring your hottest mains and sides. A “test yourself on the heat” kind of platter — bragging rights only, no refunds if you tap out.
+      </div>
+      <div class="menu-badges">
+        <div class="badge">Very spicy</div>
+        <div class="badge">Shareable</div>
+      </div>
+    </div>
+    <p class="secret-menu-note">
+      This trial is not listed on the mortal menu. Only those who find the rune may face the Minotaur.
+    </p>
+  </div>
+
   <footer>
     <div class="container">
       <div class="footer-row">
@@ -1001,6 +1233,14 @@
           yearSpan.textContent = new Date().getFullYear();
         }
         document.body.classList.add('loaded');
+
+        var rune = document.getElementById('secretRune');
+        var panel = document.getElementById('secretMenuPanel');
+        if (rune && panel) {
+          rune.addEventListener('click', function () {
+            panel.classList.toggle('open');
+          });
+        }
       });
     </script>
   </footer>
