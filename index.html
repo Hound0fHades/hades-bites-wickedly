@@ -498,6 +498,42 @@
       max-width: 32rem;
     }
 
+    /* Seasonal specials callout */
+    .season-callout {
+      border: 1px solid rgba(245,201,122,0.35);
+      border-radius: 14px;
+      padding: 0.9rem 1.2rem;
+      margin: 1rem 0 1.5rem;
+      background: radial-gradient(circle at top left, rgba(202,52,0,0.18), rgba(5,3,8,0.9));
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 18px rgba(0,0,0,0.6);
+      animation: calloutFade 0.7s ease-out both;
+    }
+
+    .season-title {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 0.88rem;
+      letter-spacing: 0.16em;
+    }
+
+    .season-message {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    @keyframes calloutFade {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Secret star (hover hotspot) */
     .secret-star {
       width: 18px;
@@ -514,6 +550,7 @@
       box-shadow: 0 0 6px rgba(245,201,122,0.4);
       transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
       background: radial-gradient(circle at top, rgba(245,201,122,0.2), transparent 60%);
+      border-style: solid;
     }
     .secret-star span {
       transform: translateY(-0.5px);
@@ -599,6 +636,58 @@
     @keyframes fadeInUp {
       0% { opacity: 0; transform: translateY(8px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Seasonal icon with hover tooltip */
+    .seasonal-icon {
+      display: inline-block;
+      margin-left: 0.3rem;
+      font-size: 0.85rem;
+      position: relative;
+      cursor: default;
+    }
+
+    .seasonal-icon::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: 130%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      background: rgba(5,3,8,0.96);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(245,201,122,0.6);
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 5;
+    }
+
+    .seasonal-icon::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 118%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: rgba(5,3,8,0.96);
+      border-left: 1px solid rgba(245,201,122,0.6);
+      border-bottom: 1px solid rgba(245,201,122,0.6);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 4;
+    }
+
+    .seasonal-icon:hover::after,
+    .seasonal-icon:hover::before {
+      opacity: 1;
     }
 
     /* Menu */
@@ -933,7 +1022,7 @@
                 </div>
                 <div class="hero-card">
                   <h4>Underworld Elixirs</h4>
-                  <p>Styx sodas, Blood Moon punch, Lethe lemon fizz, and more.</p>
+                  <p>Styx sodas, Blood Moon punch, Lethe Lemon Fizz, and more.</p>
                 </div>
                 <div class="hero-card">
                   <h4>The Hound of Hades</h4>
@@ -962,6 +1051,12 @@
           <p class="section-subtitle">
             Infernal comfort food for mortals of every kind — kids, picky eaters, spice fiends, and those walking gentler paths.
           </p>
+
+          <!-- Seasonal specials callout -->
+          <div id="seasonCallout" class="season-callout">
+            <strong class="season-title">Seasonal Specials</strong>
+            <p class="season-message">Loading seasonal offerings…</p>
+          </div>
         </div>
 
         <div class="menu-grid">
@@ -1212,19 +1307,41 @@
                 </div>
 
                 <div class="menu-item">
-  <div class="menu-item-name">
-    Cerberus Hot Chocolate
-  </div>
-  <div class="menu-item-desc">
-    Rich, three-headed hot chocolate with layers of dark, milk, and white cocoa.
-    Topped with flame-toasted marshmallow and ember drizzle. Offered during the
-    colder seasons (fall & winter).
-  </div>
-  <div class="menu-badges">
-    <div class="badge">Seasonal</div>
-    <div class="badge">DF option</div>
-  </div>
-</div>
+                  <div class="menu-item-name">
+                    Obsidian Cold Brew
+                    <span
+                      class="seasonal-icon"
+                      aria-hidden="true"
+                      data-tooltip="Summer Seasonal"
+                    >☀️</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Dark roast cold brew over ice, optionally sweetened with ember syrup or oat milk.
+                    Brewed in the shadow of Tartarus and served chilled for the hottest nights.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">DF option</div>
+                  </div>
+                </div>
+
+                <div class="menu-item">
+                  <div class="menu-item-name">
+                    Cerberus Hot Chocolate
+                    <span
+                      class="seasonal-icon"
+                      aria-hidden="true"
+                      data-tooltip="Fall & Winter Seasonal"
+                    >🍁</span>
+                  </div>
+                  <div class="menu-item-desc">
+                    Rich, three-headed hot chocolate with layers of dark, milk, and white cocoa,
+                    topped with flame-toasted marshmallow and ember drizzle. Offered during the colder seasons.
+                  </div>
+                  <div class="menu-badges">
+                    <div class="badge">Seasonal</div>
+                    <div class="badge">DF option</div>
+                  </div>
+                </div>
 
               </div>
             </div>
@@ -1332,7 +1449,7 @@
               Choose your time directly on the calendar. Once confirmed, you’ll receive an email from our booking system.
             </p>
             <div class="calendar-wrap">
-              <!-- IMPORTANT: replace this src with the exact Setmore embed URL they give you if different -->
+              <!-- Replace src with your actual Setmore embed URL if needed -->
               <iframe
                 src="https://hadesbiteswickedly.setmore.com/houndofhades"
                 loading="lazy"
@@ -1447,6 +1564,46 @@
           star.classList.toggle('active', visible);
           secret.setAttribute('aria-hidden', String(!visible));
         });
+      })();
+
+      // Seasonal callout logic + rotating titles
+      (function () {
+        const now = new Date();
+        const month = now.getMonth(); // 0 = Jan
+
+        const seasonCallout = document.getElementById("seasonCallout");
+        const seasonMessage = seasonCallout ? seasonCallout.querySelector(".season-message") : null;
+        const seasonTitleEl = seasonCallout ? seasonCallout.querySelector(".season-title") : null;
+
+        if (!seasonCallout || !seasonMessage || !seasonTitleEl) return;
+
+        // Rotate between your three favorite titles
+        const seasonTitles = [
+          "🔥 Seasonal Flames Active 🔥",
+          "Seasonal Offerings from the Deep",
+          "The Season Hungers…"
+        ];
+
+        const randomIndex = Math.floor(Math.random() * seasonTitles.length);
+        seasonTitleEl.textContent = seasonTitles[randomIndex];
+
+        let seasonContent = "";
+
+        if (month >= 5 && month <= 8) {
+          // JUNE — SEPT (Summer)
+          seasonContent = `☀️ <strong>Summer in Tartarus</strong><br>
+            Try our Obsidian Cold Brew while the fires burn hottest.`;
+        } else if (month === 10 || month === 11 || month === 0 || month === 1) {
+          // OCT — JAN (Fall/Winter)
+          seasonContent = `🍁 <strong>Winter in the Underworld</strong><br>
+            Warm yourself with Cerberus Hot Chocolate — three heads, triple cocoa fury.`;
+        } else {
+          // Spring / in-between
+          seasonContent = `✨ <strong>Soul-Stirring Transition</strong><br>
+            Limited availability — ask The Hound of Hades what’s brewing.`;
+        }
+
+        seasonMessage.innerHTML = seasonContent;
       })();
     </script>
   </footer>
