@@ -1,1734 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hades Wicked Bites | Feast in the Underworld</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hades Wicked Bites — an underworld-themed food truck serving wicked sliders, infernal mac, underworld feasts, elixirs, and grimoire desserts. Feast in the Underworld.">
-  <link rel="canonical" href="https://hound0fhades.github.io/Hades-Wicked-Bites">
+  <meta charset="UTF-8" />
+  <title>Hades Wicked Bites | Official Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg: #050308;
-      --bg-alt: #0c050b;
-      --accent: #ca3400;
-      --accent-soft: #7e0f1d;
-      --gold: #f5c97a;
-      --text: #f4f2f6;
-      --muted: #b3a9c0;
-      --border: #312033;
+      --bg: #050508;
+      --bg-alt: #111016;
+      --panel: #17141f;
+      --accent: #f97316;
+      --accent-soft: #fbbf24;
+      --accent-red: #ef4444;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #272338;
+      --radius-lg: 20px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.65);
+      --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
     }
+
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1b0710 0, #050308 55%, #020107 100%);
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      background: radial-gradient(circle at top, #1f2937 0, #020008 55%);
       color: var(--text);
-      line-height: 1.6;
-      transition: background 0.4s ease, color 0.4s ease;
-    }
-    a { color: var(--gold); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Loading Overlay */
-    .loader-overlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at top, #2b0915 0, #050308 55%, #020107 100%);
+      padding: 16px 16px 40px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .loader-inner {
-      text-align: center;
-      padding: 1.5rem 2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(245,201,122,0.4);
-      background: radial-gradient(circle at top, rgba(126,15,29,0.9), rgba(5,3,8,0.98));
-      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+
+    .page-wrap {
+      width: 100%;
+      max-width: 1040px;
     }
-    .loader-symbol {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto 0.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(245,201,122,0.7);
+
+    /* Header + Nav */
+    .top-bar {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      background: radial-gradient(circle, #ca3400 0, #050308 65%);
-      color: #fdf3e0;
-      box-shadow: 0 0 22px rgba(202,52,0,0.8);
-      animation: loaderPulse 1.6s ease-in-out infinite;
-    }
-    .loader-text-main {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #f8e8c4;
-      margin-bottom: 0.4rem;
-    }
-    .loader-text-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    body.loaded .loader-overlay {
-      opacity: 0;
-      transform: translateY(-12px);
-      pointer-events: none;
-    }
-
-    @keyframes loaderPulse {
-      0% { transform: scale(1); box-shadow: 0 0 10px rgba(202,52,0,0.4); }
-      50% { transform: scale(1.05); box-shadow: 0 0 26px rgba(202,52,0,0.9); }
-      100% { transform: scale(1); box-shadow: 0 0 10px rgba(202,52,0,0.4); }
-    }
-
-    /* Coming Soon Banner with flicker */
-    .coming-soon-banner {
-      background: linear-gradient(to right, #7e0f1d, #ca3400, #7e0f1d);
-      padding: 0.6rem 1rem;
-      text-align: center;
-      color: #f5e6dc;
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      box-shadow: 0 0 18px rgba(202,52,0,0.7);
-      position: relative;
-      overflow: hidden;
-      animation: flameFlicker 2.4s ease-in-out infinite alternate;
-    }
-
-    @keyframes flameFlicker {
-      0% {
-        opacity: 0.88;
-        text-shadow: 0 0 6px rgba(0,0,0,0.8), 0 0 14px rgba(245,201,122,0.6);
-        transform: translateY(0);
-      }
-      40% {
-        opacity: 1;
-        text-shadow: 0 0 8px rgba(0,0,0,0.9), 0 0 18px rgba(245,201,122,0.9);
-        transform: translateY(-0.5px);
-      }
-      70% {
-        opacity: 0.93;
-        text-shadow: 0 0 5px rgba(0,0,0,0.7), 0 0 12px rgba(245,201,122,0.5);
-        transform: translateY(0.5px);
-      }
-      100% {
-        opacity: 1;
-        text-shadow: 0 0 10px rgba(0,0,0,0.95), 0 0 22px rgba(245,201,122,1);
-        transform: translateY(-0.4px);
-      }
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* === STICKY HEADER WITH CENTERED CERBERUS LOGO === */
-
-    .hb-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: linear-gradient(
-        to right,
-        rgba(5, 3, 8, 0.96),
-        rgba(7, 1, 1, 0.96)
-      );
-      border-bottom: 1px solid rgba(245,201,122,0.22);
-      backdrop-filter: blur(10px);
-      box-shadow:
-        0 0 18px rgba(0,0,0,0.9),
-        inset 0 -1px 0 rgba(202,52,0,0.3);
-      transform: translateY(-18px);
-      opacity: 0;
-      transition:
-        transform 0.55s cubic-bezier(0.22,0.9,0.35,1.1),
-        opacity 0.55s ease;
-    }
-
-    .hb-header.revealed {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .hb-header.scrolled {
-      box-shadow:
-        0 0 26px rgba(0,0,0,1),
-        0 0 30px rgba(202,52,0,0.55);
-    }
-
-    .nav {
-      display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 1.25rem;
-      padding: 0.4rem 0;
-      font-size: 0.95rem;
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
-    .nav-center {
+    .brand-mark {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      text-align: center;
+      gap: 10px;
     }
 
-    .nav-logo-link {
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #f97316, #7f1d1d);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9),
+        0 10px 24px rgba(0, 0, 0, 0.7);
     }
 
-    .logo-img {
-      height: 90px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 0 12px rgba(202,52,0,0.8));
-      transition:
-        height 0.25s ease,
-        transform 0.25s ease,
-        filter 0.25s ease;
-    }
-
-    .hb-header.scrolled .logo-img {
-      height: 68px;
-      filter: drop-shadow(0 0 8px rgba(202,52,0,0.7));
-    }
-
-    .logo-img:hover {
-      animation: logoFlame 1s ease-in-out infinite alternate;
-    }
-
-    @keyframes logoFlame {
-      0% {
-        transform: translateY(0) scale(1);
-        filter: drop-shadow(0 0 10px rgba(202,52,0,0.8));
-      }
-      100% {
-        transform: translateY(-1px) scale(1.03);
-        filter: drop-shadow(0 0 18px rgba(202,52,0,1));
-      }
-    }
-
-    .nav-brand-text .brand-name {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.1em;
+    .brand-text-main {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .nav-brand-text .brand-subtitle {
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+    .brand-text-sub {
+      font-size: 11px;
       color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
     }
 
-    .nav-links-left {
+    .nav-pills {
       display: flex;
-      gap: 1.4rem;
-      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
-    .nav-links-left a {
-      position: relative;
+    .nav-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      padding: 6px 12px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--muted);
-      padding-bottom: 0.15rem;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links-left a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.2rem;
-      height: 2px;
-      width: 0;
-      border-radius: 999px;
-      background: linear-gradient(to right, #f5c97a, #ca3400, #7e0f1d);
-      box-shadow: 0 0 10px rgba(202,52,0,0.8);
-      opacity: 0;
-      transition:
-        width 0.22s ease,
-        opacity 0.22s ease;
-    }
-
-    .nav-links-left a:hover {
-      color: var(--gold);
-    }
-
-    .nav-links-left a:hover::after {
-      width: 100%;
-      opacity: 1;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-cta {
-      border-radius: 999px;
-      border: 1px solid rgba(245,201,122,0.85);
-      padding: 0.45rem 1.2rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      background:
-        radial-gradient(circle at top left, rgba(202,52,0,0.9), transparent),
-        radial-gradient(circle at bottom right, rgba(126,15,29,0.9), rgba(5,3,8,0.95));
-      color: #fff;
-      box-shadow:
-        0 0 16px rgba(202,52,0,0.9),
-        0 0 4px rgba(245,201,122,0.8);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .nav-cta::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0% 50%, rgba(245,201,122,0.35), transparent 55%);
-      transform: translateX(-120%);
-      transition: transform 0.35s ease-out;
-      pointer-events: none;
-    }
-
-    .nav-cta:hover::after {
-      transform: translateX(120%);
-    }
-
-    .nav-cta:hover {
-      box-shadow:
-        0 0 22px rgba(202,52,0,1),
-        0 0 10px rgba(245,201,122,0.9);
-    }
-
-    main {
-      padding-bottom: 4rem;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 3.5rem 0 3rem;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: center;
-    }
-    .hero-eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      font-size: 0.7rem;
-      color: var(--gold);
-      opacity: 0.9;
-      margin-bottom: 0.75rem;
-    }
-    .hero-title {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 18px rgba(0,0,0,0.8);
-    }
-    .hero-title span {
-      color: var(--accent);
-    }
-    .hero-subtitle {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 32rem;
-      margin-bottom: 1.4rem;
-    }
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.6rem;
-    }
-    .tag {
-      border-radius: 999px;
-      border: 1px solid rgba(245,201,122,0.3);
-      padding: 0.2rem 0.6rem;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--gold);
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-    .btn {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      padding: 0.55rem 1.3rem;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
+      gap: 6px;
       cursor: pointer;
-      text-decoration: none;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-      color: #fff;
-      box-shadow: 0 0 18px rgba(202,52,0,0.7);
-    }
-    .btn-primary:hover {
-      filter: brightness(1.05);
-    }
-    .btn-ghost {
-      border-color: rgba(245,201,122,0.5);
-      color: var(--gold);
-      background: rgba(5,3,8,0.6);
-    }
-    .btn-ghost:hover {
-      background: rgba(245,201,122,0.08);
-    }
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-    .hero-art {
-      border-radius: 24px;
-      border: 1px solid rgba(245,201,122,0.3);
-      padding: 1px;
-      background: radial-gradient(circle at top, rgba(202,52,0,0.8), #050308);
-      box-shadow:
-        0 0 32px rgba(202,52,0,0.45),
-        0 0 80px rgba(0,0,0,0.9);
-    }
-    .hero-art-inner {
-      border-radius: 22px;
-      background: radial-gradient(circle at bottom, #050308 0, #140308 40%, #050308 100%);
-      padding: 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .hero-art-title {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-    .hero-art-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      font-size: 0.8rem;
-    }
-    .hero-card {
-      border-radius: 16px;
-      border: 1px solid rgba(245,201,122,0.25);
-      padding: 0.6rem 0.7rem;
-      background: radial-gradient(circle at top left, rgba(126,15,29,0.6), rgba(5,3,8,0.9));
-    }
-    .hero-card h4 {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--gold);
-      margin-bottom: 0.2rem;
-    }
-    .hero-card p {
-      font-size: 0.78rem;
-      color: var(--muted);
+      transition: 0.18s ease all;
     }
 
-    section {
-      padding: 2.5rem 0;
-      border-top: 1px solid rgba(245,201,122,0.12);
+    .nav-pill span {
+      font-size: 13px;
     }
+
+    .nav-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent-soft);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* Section headers */
+    .section-block {
+      margin-top: 24px;
+    }
+
     .section-header {
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-    .section-eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      font-size: 0.7rem;
-      color: var(--gold);
-      margin-bottom: 0.2rem;
+      margin-bottom: 10px;
     }
 
-    .section-title-row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 10px;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
     }
 
     .section-title {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1.4rem;
-      margin-bottom: 0.3rem;
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title span.icon {
+      font-size: 20px;
     }
 
     .section-subtitle {
-      font-size: 0.88rem;
+      font-size: 12px;
       color: var(--muted);
-      max-width: 32rem;
+      margin-top: 4px;
     }
 
-    /* Seasonal specials callout */
-    .season-callout {
-      border: 1px solid rgba(245,201,122,0.35);
-      border-radius: 14px;
-      padding: 0.9rem 1.2rem;
-      margin: 1rem 0 1.5rem;
-      background: radial-gradient(circle at top left, rgba(202,52,0,0.18), rgba(5,3,8,0.9));
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 18px rgba(0,0,0,0.6);
-      animation: calloutFade 0.7s ease-out both;
+    /* Menu cards */
+
+    .menu-card {
+      background: linear-gradient(135deg, #0b0710, #161320);
+      padding: 16px 18px;
+      margin: 12px 0;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
     }
 
-    .season-title {
-      color: var(--gold);
+    .menu-card-title {
+      font-size: 18px;
+      margin: 0 0 6px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .menu-card-text {
+      font-size: 13px;
+      margin: 0 0 8px;
+      line-height: 1.5;
+      color: #e5e7eb;
+    }
+
+    .menu-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      font-size: 10px;
       text-transform: uppercase;
-      font-size: 0.88rem;
-      letter-spacing: 0.16em;
-    }
-
-    .season-message {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
-
-    @keyframes calloutFade {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Secret star (hover hotspot) */
-    .secret-star {
-      width: 18px;
-      height: 18px;
+      padding: 3px 7px;
       border-radius: 999px;
-      border: 1px solid rgba(245,201,122,0.55);
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      letter-spacing: 0.12em;
+      color: #f9fafb;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      color: #f5e6dc;
-      cursor: pointer;
-      opacity: 0.45;
-      box-shadow: 0 0 6px rgba(245,201,122,0.4);
-      transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-      background: radial-gradient(circle at top, rgba(245,201,122,0.2), transparent 60%);
-      border-style: solid;
-    }
-    .secret-star span {
-      transform: translateY(-0.5px);
-    }
-    .secret-star:hover {
-      opacity: 0.9;
-      transform: scale(1.05);
-      box-shadow: 0 0 10px rgba(245,201,122,0.8);
-    }
-    .secret-star.active {
-      opacity: 1;
-      box-shadow: 0 0 12px rgba(245,201,122,1), 0 0 20px rgba(202,52,0,0.9);
-    }
-
-    /* Secret menu panel */
-    .secret-menu {
-      margin-top: 1.4rem;
-      border-radius: 18px;
-      border: 1px dashed rgba(245,201,122,0.4);
-      background: radial-gradient(circle at top left, rgba(15,3,10,0.97), rgba(5,3,8,0.98));
-      padding: 1.1rem 1.2rem;
-      font-size: 0.85rem;
-      display: none;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    .secret-menu::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(245,201,122,0.18), transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(202,52,0,0.25), transparent 60%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-    .secret-menu-inner {
-      position: relative;
-      z-index: 1;
-    }
-    .secret-menu.visible {
-      display: block;
-      animation: fadeInUp 0.38s ease forwards;
-    }
-    .secret-menu-label {
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.72rem;
-      color: var(--gold);
-      margin-bottom: 0.3rem;
-    }
-    .secret-menu-title {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-    }
-    .secret-menu-desc {
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-    .secret-menu-meta {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-    .secret-price {
-      color: var(--gold);
-      font-weight: 600;
-    }
-    .secret-badge {
-      display: inline-block;
-      margin-left: 0.4rem;
-      padding: 0.05rem 0.45rem;
-      border-radius: 999px;
-      border: 1px solid rgba(202,52,0,0.7);
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #f5e6dc;
-    }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(8px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Seasonal icon with hover tooltip */
-    .seasonal-icon {
-      display: inline-block;
-      margin-left: 0.3rem;
-      font-size: 0.85rem;
-      position: relative;
-      cursor: default;
-    }
-
-    .seasonal-icon::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      left: 50%;
-      bottom: 130%;
-      transform: translateX(-50%);
+      gap: 4px;
       white-space: nowrap;
-      background: rgba(5,3,8,0.96);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 0.25rem 0.6rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid rgba(245,201,122,0.6);
-      box-shadow: 0 0 10px rgba(0,0,0,0.8);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease;
-      z-index: 5;
     }
 
-    .seasonal-icon::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 118%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 8px;
-      height: 8px;
-      background: rgba(5,3,8,0.96);
-      border-left: 1px solid rgba(245,201,122,0.6);
-      border-bottom: 1px solid rgba(245,201,122,0.6);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      z-index: 4;
+    .badge-main {
+      border-color: rgba(249, 115, 22, 0.9);
     }
 
-    .seasonal-icon:hover::after,
-    .seasonal-icon:hover::before {
-      opacity: 1;
+    .badge-side {
+      border-color: rgba(96, 165, 250, 0.9);
     }
 
-    /* Menu */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 2rem;
+    .badge-elixir {
+      border-color: rgba(45, 212, 191, 0.9);
     }
-    .menu-columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
+
+    .badge-dessert {
+      border-color: rgba(251, 191, 36, 0.9);
     }
-    .menu-group-title {
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.75rem;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
+
+    .badge-chaos {
+      border-color: rgba(239, 68, 68, 0.9);
     }
-    .menu-item {
-      padding: 0.55rem 0;
-      border-bottom: 1px dashed rgba(245,201,122,0.25);
+
+    .badge-seasonal {
+      border-color: rgba(249, 115, 22, 0.9);
     }
-    .menu-item:last-child {
-      border-bottom: none;
-    }
-    .menu-item-name {
-      font-size: 0.9rem;
-      display: flex;
-      justify-content: space-between;
-      gap: 0.4rem;
-    }
-    .menu-item-name span {
-      color: var(--gold);
-      font-size: 0.8rem;
-      opacity: 0.9;
-    }
-    .menu-item-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.1rem;
-    }
-    .menu-badges {
-      margin-top: 0.25rem;
+
+    .menu-rating {
+      font-size: 11px;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.25rem;
-      font-size: 0.7rem;
-    }
-    .badge {
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 0.05rem 0.45rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
+      gap: 10px;
+      color: var(--accent-soft);
     }
 
-    .menu-art {
-      border-radius: 20px;
-      border: 1px solid rgba(245,201,122,0.25);
-      padding: 1rem;
-      background: radial-gradient(circle at top, rgba(202,52,0,0.7), #050308);
-      font-size: 0.8rem;
-    }
-    .menu-art h4 {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .menu-art p {
-      color: var(--muted);
-    }
-    .menu-spell {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-style: italic;
-      margin-top: 0.5rem;
-      color: #f8e8c4;
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2rem;
-    }
-    .about-box {
-      border-radius: 18px;
-      border: 1px solid rgba(245,201,122,0.25);
-      padding: 1.1rem 1.2rem;
-      background: radial-gradient(circle at top left, rgba(126,15,29,0.6), rgba(5,3,8,0.95));
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .about-box strong {
-      color: var(--gold);
-    }
-    .about-label {
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.75rem;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-      display: block;
-    }
-    .about-quote {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-style: italic;
-      margin-top: 0.7rem;
-      color: #f8e8c4;
-    }
-    .about-highlight {
-      border-radius: 16px;
-      border: 1px dashed rgba(245,201,122,0.4);
-      padding: 0.9rem 1rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* Contact / Summon */
-    .contact {
-      background: radial-gradient(circle at top, #15020b, #050308);
-    }
-    .summon-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-      gap: 2rem;
-    }
-
-    /* Calendar panel */
-    .summon-calendar {
-      border-radius: 20px;
-      border: 1px solid rgba(245,201,122,0.25);
-      padding: 1.3rem 1.4rem;
-      background: radial-gradient(circle at top, rgba(202,52,0,0.7), #050308);
-      box-shadow: 0 0 24px rgba(0,0,0,0.9);
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .summon-calendar h4 {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-    .calendar-wrap {
-      margin-top: 0.6rem;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #050308;
-      border: 1px solid rgba(245,201,122,0.3);
-      height: 460px;
-    }
-    .calendar-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* Simple contact card (email-only inquiries) */
-    .contact-card {
-      border-radius: 20px;
-      border: 1px solid rgba(245,201,122,0.25);
-      padding: 1.3rem 1.4rem;
-      background: radial-gradient(circle at top left, rgba(126,15,29,0.7), rgba(5,3,8,0.96));
-      box-shadow: 0 0 24px rgba(0,0,0,0.9);
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .contact-card-title {
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-    .contact-card p {
-      margin-bottom: 0.6rem;
-    }
-    .contact-card-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 0.3rem 0 0.6rem;
-    }
-    .contact-card-list li {
-      margin-bottom: 0.25rem;
-    }
-    .contact-card-list li::before {
-      content: "✶";
-      color: var(--accent);
-      margin-right: 0.35rem;
-    }
-    .contact-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.3rem;
-    }
-
-    footer {
-      border-top: 1px solid rgba(245,201,122,0.18);
-      padding: 1rem 0 1.6rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-    .footer-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+    .menu-rating span {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-    }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 4px;
     }
 
-    /* === NIGHT PEARLS RECIPE STYLES === */
-    .recipe-card {
-      border-radius: 18px;
-      border: 1px solid rgba(245,201,122,0.25);
-      padding: 1.2rem 1.3rem;
-      background: radial-gradient(circle at top left, rgba(126,15,29,0.55), rgba(5,3,8,0.96));
-      box-shadow: 0 0 22px rgba(0,0,0,0.85);
-      font-size: 0.9rem;
-    }
-    .recipe-meta {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .recipe-lore {
-      font-size: 0.88rem;
-      color: var(--text);
-      margin-bottom: 0.95rem;
-    }
-    .recipe-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-      gap: 1.2rem;
-    }
-    .recipe-subheading {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--gold);
-      margin-bottom: 0.35rem;
-    }
-    .recipe-card ul {
-      margin: 0 0 0.7rem;
-      padding-left: 1.1rem;
-      font-size: 0.86rem;
-      color: var(--text);
-    }
-    .recipe-card li + li {
-      margin-top: 0.25rem;
-    }
-    .recipe-footer-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.6rem;
-    }
-
-    @media (max-width: 840px) {
-      .hero-grid,
-      .menu-grid,
-      .about-grid,
-      .summon-grid {
-        grid-template-columns: minmax(0, 1fr);
+    @media (max-width: 600px) {
+      body {
+        padding: 12px 12px 32px;
       }
-      .nav-links-left {
-        display: none;
-      }
-      .nav {
-        justify-content: space-between;
-      }
-      .logo-img {
-        height: 80px;
-      }
-      .hb-header.scrolled .logo-img {
-        height: 62px;
-      }
-      .calendar-wrap {
-        height: 380px;
-      }
-      .recipe-grid {
-        grid-template-columns: minmax(0,1fr);
+      .menu-card {
+        padding: 14px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="page-wrap">
+    <!-- Top Brand + Nav -->
+    <header class="top-bar">
+      <div class="brand-mark">
+        <div class="brand-logo">🜂</div>
+        <div>
+          <div class="brand-text-main">Hades Wicked Bites</div>
+          <div class="brand-text-sub">Underworld-Inspired Street Feast</div>
+        </div>
+      </div>
 
-  <!-- Loading overlay -->
-  <div class="loader-overlay">
-    <div class="loader-inner">
-      <div class="loader-symbol">HWB</div>
-      <div class="loader-text-main">Summoning the Underworld Kitchen…</div>
-      <div class="loader-text-sub">Please wait, mortal.</div>
-    </div>
+      <nav class="nav-pills" aria-label="Menu Navigation">
+        <a class="nav-pill" href="#mains"><span>🍔</span>Mains</a>
+        <a class="nav-pill" href="#sides"><span>🍟</span>Sides</a>
+        <a class="nav-pill" href="#elixirs"><span>🥤</span>Elixirs</a>
+        <a class="nav-pill" href="#sweets"><span>🍩</span>Wicked Sweets</a>
+      </nav>
+    </header>
+
+    <!-- MAINS -->
+    <section id="mains" class="section-block" aria-labelledby="mains-heading">
+      <div class="section-header">
+        <div class="section-kicker">Feast of the Damned</div>
+        <h2 id="mains-heading" class="section-title">
+          <span class="icon">🍔</span> Mains
+        </h2>
+        <p class="section-subtitle">
+          Big bites with teeth. Built to satisfy mortals, wraiths, and hungry gods.
+        </p>
+      </div>
+
+      <!-- Cerberus Sliders -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🐺🔥 Cerberus Sliders</h3>
+        <p class="menu-card-text">
+          Triple-seasoned mini burgers dripping in molten Ember Cheese and wicked sauce.
+          Small in size, massive in attitude.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-main">Signature</span>
+          <span class="badge">Available in Inferno Mode</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂🜂 Heat (🜂🜂🜂🜂 in Hellfire)</span>
+          <span>☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Acheron Mac -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🔥🌀 Acheron Mac</h3>
+        <p class="menu-card-text">
+          Cauldron-baked mac drowned in Ember Cheese, finished with Shadow Seasoning.
+          A swirling void of comfort and danger.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-main">Cauldron Mac</span>
+          <span class="badge">Flame-level custom</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴✴ Comfort</span>
+          <span>🜂 Heat</span>
+          <span>☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Ashen Bites -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🜂🜂 Ashen Bites</h3>
+        <p class="menu-card-text">
+          Boneless “wingless” bites tossed in Cerberus Lime Inferno. No bones. No mercy.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-main">Bite-Sized Fury</span>
+          <span class="badge badge-chaos">Great with Hellfire dip</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴ Comfort</span>
+          <span>🜂🜂🜂 Heat</span>
+          <span>☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Void Bowl -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🌑🍲 Void Bowl</h3>
+        <p class="menu-card-text">
+          A blackened bowl of loaded noodles, bites, fries or tots, sauces and toppings
+          swirling in a delicious abyss.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-main">Build-Your-Doom</span>
+          <span class="badge">Stacked & Smothered</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂–🜂🜂🜂 Heat (your call)</span>
+          <span>☠☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Minotaur Nachos -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🐂🔥 Minotaur Nachos</h3>
+        <p class="menu-card-text">
+          A towering maze of chips, Ember Cheese, Ashen Bites, Blood Orange Hex drizzle,
+          and all the fixings. Brave the labyrinth.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-main">Stacked Shareable</span>
+          <span class="badge badge-chaos">Challenge Friendly</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂🜂 Heat</span>
+          <span>☠☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Ember Mac Cups -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🔥🧁 Ember Mac Cups</h3>
+        <p class="menu-card-text">
+          Individual cauldrons of mac—crisp on top, molten inside. Easy to carry,
+          impossible to share.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-main">Handheld</span>
+          <span class="badge">Great for roaming mortals</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴✴ Comfort</span>
+          <span>🜂 Heat</span>
+          <span>☠ Chaos</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- SIDES -->
+    <section id="sides" class="section-block" aria-labelledby="sides-heading">
+      <div class="section-header">
+        <div class="section-kicker">Spellbound Sides</div>
+        <h2 id="sides-heading" class="section-title">
+          <span class="icon">🍟</span> Sides
+        </h2>
+        <p class="section-subtitle">
+          Every main needs minions: fries, tots, and fruit that joined the dark side.
+        </p>
+      </div>
+
+      <!-- Cinder Fries -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🔥🍟 Cinder Fries</h3>
+        <p class="menu-card-text">
+          Hand-cut fries dusted with Shadow Seasoning. Crisp, smoky, and slightly
+          suspicious.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-side">Side</span>
+          <span class="badge">Upgrade with Ember Cheese</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂 Heat (🜂🜂 with Hellfire)</span>
+          <span>☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Void Tots -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🌑🧊 Void Tots</h3>
+        <p class="menu-card-text">
+          Crispy tater tots tossed in Shadow Seasoning. They stare back... but taste amazing.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-side">Side</span>
+          <span class="badge badge-chaos">Bowl-Friendly</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂 Heat</span>
+          <span>☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Orchard Souls Cups -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🍎🕯 Orchard Souls Cups</h3>
+        <p class="menu-card-text">
+          Charred and glazed fruit cups that wandered out of the orchard and into the fire.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-side">Side</span>
+          <span class="badge">Whispers “healthy-ish”</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂 Heat (optional)</span>
+          <span>☠ Chaos</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- ELIXIRS -->
+    <section id="elixirs" class="section-block" aria-labelledby="elixirs-heading">
+      <div class="section-header">
+        <div class="section-kicker">Underworld Elixirs</div>
+        <h2 id="elixirs-heading" class="section-title">
+          <span class="icon">🥤</span> Elixirs
+        </h2>
+        <p class="section-subtitle">
+          Potions, fizz, and brewed darkness to match every hunger and every dare.
+        </p>
+      </div>
+
+      <!-- River Styx Soda Flight -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🌊🫧 River Styx Soda Flight</h3>
+        <p class="menu-card-text">
+          A trio of cursed sodas in shifting colors and flavors. Sweet, strange, and
+          perfect for indecisive souls.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-elixir">Elixir</span>
+          <span class="badge">Flight</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂 Heat-free</span>
+          <span>☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Blood Moon Punch -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🩸🌙 Blood Moon Punch</h3>
+        <p class="menu-card-text">
+          Deep red punch swirling with fruit and secret mischief. Sweet, bold, and
+          dangerously easy to keep sipping.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-elixir">Elixir</span>
+          <span class="badge">Fan Favorite</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂 Heat (🜂🜂 if spiced)</span>
+          <span>☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Lethe Lemon Fizz -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">✨🍋 Lethe Lemon Fizz</h3>
+        <p class="menu-card-text">
+          Light, sparkling lemon elixir that helps you forget your worries—and maybe what
+          you were supposed to do next.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-elixir">Elixir</span>
+          <span class="badge">Bright & Bubbly</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂 Heat-free</span>
+          <span>☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Elysian Spring Water -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">💧🌤 Elysian Spring Water</h3>
+        <p class="menu-card-text">
+          Chilled, deceptively simple water from the nice part of the afterlife. Calm in a cup.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-elixir">Elixir</span>
+          <span class="badge">Reset</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴ Comfort</span>
+          <span>🜂 None</span>
+          <span>☠ None</span>
+        </div>
+      </article>
+
+      <!-- Obsidian Cold Brew (Seasonal) -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">☕🌑 Obsidian Cold Brew <span style="font-size:11px;">(Seasonal)</span></h3>
+        <p class="menu-card-text">
+          Jet-black cold brew steeped in the dark. Smooth, intense, and not responsible
+          for any sudden life decisions.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-elixir">Elixir</span>
+          <span class="badge badge-seasonal">Summer Seasonal</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴ Comfort</span>
+          <span>🜂🜂 Caffeine Heat</span>
+          <span>☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Cerberus Hot Chocolate (Seasonal) -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🍫🐺 Cerberus Hot Chocolate <span style="font-size:11px;">(Seasonal)</span></h3>
+        <p class="menu-card-text">
+          Thick, dark hot chocolate crowned with three marshmallows—one for each head.
+          Cozy, unless you add chili.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-elixir">Elixir</span>
+          <span class="badge badge-seasonal">Winter Seasonal</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴✴ Comfort</span>
+          <span>🜂 Heat (🜂🜂 with spice)</span>
+          <span>☠ Chaos</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- WICKED SWEETS -->
+    <section id="sweets" class="section-block" aria-labelledby="sweets-heading">
+      <div class="section-header">
+        <div class="section-kicker">Wicked Sweets</div>
+        <h2 id="sweets-heading" class="section-title">
+          <span class="icon">🍩</span> Desserts
+        </h2>
+        <p class="section-subtitle">
+          Sugar, darkness, and just enough danger to make dessert feel like a ritual.
+        </p>
+      </div>
+
+      <!-- Underworld Churros -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🍩🔥 Underworld Churros</h3>
+        <p class="menu-card-text">
+          Fried dough wands rolled in midnight sugar, served with dipping sauces for
+          sinners and sweethearts alike.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-dessert">Dessert Spell</span>
+          <span class="badge">Shareable</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴✴ Comfort</span>
+          <span>🜂 Heat (🜂🜂 with Hellfire dip)</span>
+          <span>☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Cerberus Chocolate Skulls -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">💀🐺 Cerberus Chocolate Skulls</h3>
+        <p class="menu-card-text">
+          Three rich chocolate skulls, but one hides a wicked burst of heat. A dessert
+          dare disguised as a treat.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-dessert">Dessert Spell</span>
+          <span class="badge badge-chaos">Game of Chance</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂🜂 Heat (up to 🜂🜂🜂🜂 in “rigged” sets)</span>
+          <span>☠☠☠ Chaos</span>
+        </div>
+      </article>
+
+      <!-- Night Pearls of Persephone (short version) -->
+      <article class="menu-card">
+        <h3 class="menu-card-title">🍎✨ Night Pearls of Persephone</h3>
+        <p class="menu-card-text">
+          Dark chocolate-coated pomegranate jewels—forbidden fruit made dangerously bite-sized.
+        </p>
+        <div class="menu-badges">
+          <span class="badge badge-dessert">Dessert Spell</span>
+          <span class="badge badge-seasonal">Seasonal</span>
+        </div>
+        <div class="menu-rating">
+          <span>✴✴ Comfort</span>
+          <span>🜂 Heat</span>
+          <span>☠☠ Chaos</span>
+        </div>
+      </article>
+    </section>
   </div>
-
-  <!-- COMING SOON BANNER -->
-  <div class="coming-soon-banner">
-    🔥 Hades Wicked Bites • COMING SOON • Feast in the Underworld 🔥
-  </div>
-
-  <!-- HEADER WITH CENTERED CERBERUS LOGO -->
-  <header class="hb-header">
-    <div class="container">
-      <div class="nav">
-        <nav class="nav-links-left">
-          <a href="#menu">Menu</a>
-          <a href="#night-pearls">Grimoire</a>
-          <a href="#about">Lore</a>
-        </nav>
-
-        <div class="nav-center">
-          <a href="#top" class="nav-logo-link">
-            <!-- Make sure this file name & path matches your actual logo -->
-            <img src="HadesWickedBites.png" alt="Hades Wicked Bites Logo" class="logo-img">
-          </a>
-          <div class="nav-brand-text">
-            <div class="brand-name">Hades Wicked Bites</div>
-            <div class="brand-subtitle">Feast in the Underworld</div>
-          </div>
-        </div>
-
-        <div class="nav-right">
-          <a href="#contact" class="nav-cta">Summon the Hound</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="container">
-        <div class="hero-grid">
-          <div>
-            <div class="hero-eyebrow">Underworld food truck • roaming realm of mortals</div>
-            <h1 class="hero-title">
-              <span>Hades Wicked Bites</span><br>
-              Eat wickedly. Feast in the Underworld.
-            </h1>
-            <p class="hero-subtitle">
-              An infernal food truck serving sliders, infernal mac, bites, bowls, combos, and underworld elixirs.
-              Dark, witchy, family-friendly, and allergy-aware — welcome to the Underworld Kitchen.
-            </p>
-            <div class="hero-tags">
-              <div class="tag">Sliders</div>
-              <div class="tag">Infernal Mac</div>
-              <div class="tag">Combos</div>
-              <div class="tag">Underworld Elixirs</div>
-              <div class="tag">Allergy Friendly Options</div>
-            </div>
-            <div class="hero-actions">
-              <a href="#menu" class="btn btn-primary">View the Menu</a>
-              <a href="#contact" class="btn btn-ghost">Summon for Events</a>
-              <div class="hero-note">
-                GF / DF / vegan-friendly paths through the Underworld are available.
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-art">
-            <div class="hero-art-inner">
-              <div class="hero-art-title">Tonight in the Underworld</div>
-              <div class="hero-art-grid">
-                <div class="hero-card">
-                  <h4>Infernal Favorites</h4>
-                  <p>Cerberus Sliders • Acheron Mac • Ashen Bites • The Void Bowl.</p>
-                </div>
-                <div class="hero-card">
-                  <h4>Combos & Feasts</h4>
-                  <p>Cerberus Trio Combos and Underworld Feast platters for sharing.</p>
-                </div>
-                <div class="hero-card">
-                  <h4>Underworld Elixirs</h4>
-                  <p>Styx sodas, Blood Moon punch, Lethe Lemon Fizz, and more.</p>
-                </div>
-                <div class="hero-card">
-                  <h4>The Hound of Hades</h4>
-                  <p>The Underworld Kitchen is led by The Hound of Hades.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Menu -->
-    <section id="menu">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-eyebrow">The Wicked Feast</div>
-          <div class="section-title-row">
-            <h2 class="section-title">Underworld Menu</h2>
-            <!-- subtle ghost hotspot star -->
-            <button class="secret-star" id="secretStar" aria-label="Hidden sigil">
-              <span>✶</span>
-            </button>
-          </div>
-          <p class="section-subtitle">
-            Infernal comfort food for mortals of every kind — kids, picky eaters, spice fiends, and those walking gentler paths.
-          </p>
-
-          <!-- Seasonal specials callout -->
-          <div id="seasonCallout" class="season-callout">
-            <strong class="season-title">Seasonal Specials</strong>
-            <p class="season-message">Loading seasonal offerings…</p>
-          </div>
-        </div>
-
-        <div class="menu-grid">
-          <div>
-            <div class="menu-columns">
-              <!-- LEFT COLUMN -->
-              <div>
-                <div class="menu-group-title">Mains</div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Cerberus Sliders
-                    <span>Signature</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Three wicked mini burgers with molten cheese, Cerberus seasoning, and Underworld aioli.
-                    Also available plain for mortal palates.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">Kid-friendly option</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Acheron Mac
-                    <span>Infernal Mac</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Smoky, creamy mac with ember-seasoned cheese. Choose Mortal (plain), Wicked (medium), or Hellfire (spicy),
-                    with optional GF/DF substitutes.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">GF available</div>
-                    <div class="badge">DF option</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Ashen Bites
-                    <span>Chicken or Tofu</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Crispy bites of chicken or tofu served plain, with Ember Honey, or drenched in Cerberus Lime Inferno glaze.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">Vegan option</div>
-                    <div class="badge">GF breading option</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    The Void Bowl
-                    <span>Custom</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Rice or cauliflower base with charred veggies and your choice of chicken, pork, tofu, or full-veggie.
-                    Sauce intensity from “Mortal” to “Infernal”.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">GF friendly</div>
-                    <div class="badge">Vegan option</div>
-                    <div class="badge">Dairy-free option</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Minotaur Nachos
-                    <span>Shareable</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Black or classic chips loaded with ember cheese, protein of choice, and optional Hellfire drizzle.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">GF chips option</div>
-                  </div>
-                </div>
-
-                <div class="menu-group-title" style="margin-top:0.9rem;">Combos & Feasts</div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Cerberus Trio Combo
-                    <span>Combo</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Three Cerberus Sliders (or Mortal-style plain), Cinder or Mortal Fries, and one Underworld Elixir.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">Best-seller</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Underworld Feast for Two
-                    <span>Shareable</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Mix of sliders, Ashen Bites, a shared side, and two elixirs. Built for couples, covens, or best fiends.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">Shareable</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Little Wraith Combo
-                    <span>Kids</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    One plain slider or Ashen Bites, Mortal Fries or fruit cup, and a small elixir or juice.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">Kid-friendly</div>
-                    <div class="badge">Allergy-aware</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- RIGHT COLUMN -->
-              <div>
-                <div class="menu-group-title">Kid & Picky Paths</div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Mortal Slider Meal
-                  </div>
-                  <div class="menu-item-desc">
-                    Simple slider with cheese, no spice, served with Mortal Fries and ketchup. Perfect for cautious mortals.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">Kid-friendly</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Gentle Ember Bowl
-                  </div>
-                  <div class="menu-item-desc">
-                    Rice or fries topped with plain chicken or tofu, light seasoning only, with sauce on the side.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">GF option</div>
-                    <div class="badge">DF option</div>
-                  </div>
-                </div>
-
-                <div class="menu-group-title" style="margin-top:0.9rem;">Sides & Sweets</div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Cinder Fries
-                    <span>or Mortal Fries</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Ember-spiced or plain fries with Underworld aioli, Cerberus Lime Inferno, or classic dips.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">GF</div>
-                    <div class="badge">Kid-friendly option</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Ember Mac Cups
-                    <span>Side</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Single-serve cups of Acheron mac for kids, snackers, or those dabbling lightly in the flames.
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Elysian Orchard Fruit Cups
-                  </div>
-                  <div class="menu-item-desc">
-                    Fresh seasonal fruit gathered from the “Elysian fields” beyond the Underworld. Light, bright, and halo-approved.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">Vegan</div>
-                    <div class="badge">GF</div>
-                    <div class="badge">DF</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Underworld Churros
-                  </div>
-                  <div class="menu-item-desc">
-                    Cinnamon-ash sugar churros with optional flame caramel dip.
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Cerberus Chocolate Skulls
-                  </div>
-                  <div class="menu-item-desc">
-                    Dark chocolate skulls, available in classic or gently spiced for brave souls.
-                  </div>
-                </div>
-
-                <div class="menu-group-title" style="margin-top:0.9rem;">Underworld Elixirs (Drinks)</div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    River Styx Soda Flight
-                  </div>
-                  <div class="menu-item-desc">
-                    Trio of mini sodas in rotating underworld flavors — perfect for tasting all the rivers at once.
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Blood Moon Punch
-                  </div>
-                  <div class="menu-item-desc">
-                    Deep red citrus-berry punch, available still or lightly sparkling. Non-alcoholic, spooky on purpose.
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Lethe Lemon Fizz
-                  </div>
-                  <div class="menu-item-desc">
-                    Tart lemon-lime fizz with a hint of vanilla. Refreshing enough to forget your mortal worries.
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Elysian Spring Water
-                  </div>
-                  <div class="menu-item-desc">
-                    Still or sparkling water from the “upper realms” — for those pacing their journey through the flames.
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Obsidian Cold Brew
-                    <span
-                      class="seasonal-icon"
-                      aria-hidden="true"
-                      data-tooltip="Summer Seasonal"
-                    >☀️</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Dark roast cold brew over ice, optionally sweetened with ember syrup or oat milk.
-                    Brewed in the shadow of Tartarus and served chilled for the hottest nights.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">DF option</div>
-                  </div>
-                </div>
-
-                <div class="menu-item">
-                  <div class="menu-item-name">
-                    Cerberus Hot Chocolate
-                    <span
-                      class="seasonal-icon"
-                      aria-hidden="true"
-                      data-tooltip="Fall & Winter Seasonal"
-                    >🍁</span>
-                  </div>
-                  <div class="menu-item-desc">
-                    Rich, three-headed hot chocolate with layers of dark, milk, and white cocoa,
-                    topped with flame-toasted marshmallow and ember drizzle. Offered during the colder seasons.
-                  </div>
-                  <div class="menu-badges">
-                    <div class="badge">Seasonal</div>
-                    <div class="badge">DF option</div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- Spellbook-style panel -->
-          <aside class="menu-art">
-            <h4>The Spellbook of Hunger</h4>
-            <p>
-              Each dish is crafted with care for mortals of all realms: from little wraiths and cautious palates
-              to spice-daring souls who crave the full heat of Hellfire.
-            </p>
-            <p class="menu-spell">
-              “Speak your allergies and your preferred level of flame — the Underworld Kitchen listens.”
-            </p>
-            <p style="margin-top:0.7rem;">
-              Look for the sigils:<br>
-              ✶ GF = Gluten-friendly paths<br>
-              ✶ DF = Dairy-free options<br>
-              ✶ V = Vegan-friendly feasts<br>
-              ✶ Mild, Wicked, or Infernal spice tiers
-            </p>
-          </aside>
-        </div>
-
-        <!-- SECRET MENU: Minotaur’s Challenge Platter ONLY -->
-        <div id="secretMenu" class="secret-menu" aria-hidden="true">
-          <div class="secret-menu-inner">
-            <div class="secret-menu-label">Hidden Runes of the Underworld</div>
-            <div class="secret-menu-title">Minotaur’s Challenge Platter</div>
-            <p class="secret-menu-desc">
-              A massive, heat-forged feast of your <em>hottest</em> mains and sides —
-              a “test yourself on the flames of the Labyrinth” kind of platter. No prizes, no mercy, just bragging rights.
-            </p>
-            <p class="secret-menu-meta">
-              <span class="secret-price">$24–$34</span>
-              <span class="secret-badge">Very spicy • Shareable</span>
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Night Pearls of Persephone Recipe -->
-    <section id="night-pearls">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-eyebrow">Dessert Spell · Grimoire</div>
-          <h2 class="section-title">Night Pearls of Persephone</h2>
-          <p class="section-subtitle">
-            Dark chocolate–dipped pomegranate jewels that work as a stand-alone sweet,
-            a garnish for bowls, or a little chaos on a dessert platter from the Hades Wicked Bites grimoire.
-          </p>
-        </div>
-
-        <div class="recipe-card">
-          <div class="recipe-meta">
-            Yield: 4–6 as garnish · 2–3 as dessert · Dietary: GF, DF, vegetarian · easily vegan
-          </div>
-
-          <p class="recipe-lore">
-            Persephone’s lost seeds, stolen by Hades and drowned in midnight chocolate.
-            Sweetness first, then a sharp little truth in every bite.
-          </p>
-
-          <div class="recipe-grid">
-            <!-- Ingredients -->
-            <div>
-              <div class="recipe-subheading">Ingredients</div>
-              <ul>
-                <li>1 large pomegranate, seeds freed and patted very dry</li>
-                <li>1 cup dark chocolate chips or chopped bar (70% cacao or higher)</li>
-                <li>1 teaspoon dark syrup or honey (optional, for a softer sweetness)</li>
-                <li>Pinch of flaky sea salt for finishing</li>
-              </ul>
-
-              <div class="recipe-subheading">Optional Variants</div>
-              <ul>
-                <li><strong>Winter Solstice:</strong> Add 1/2 tsp cinnamon and a tiny pinch of clove, finish with orange zest instead of salt.</li>
-                <li><strong>Summer Fire:</strong> Add a pinch of chili powder or cayenne to the melted chocolate; keep the sea salt on top.</li>
-              </ul>
-            </div>
-
-            <!-- Directions -->
-            <div>
-              <div class="recipe-subheading">Directions</div>
-              <ul>
-                <li>Open the pomegranate, harvest the seeds in a bowl of water, then drain and pat them very dry. Any water will make the chocolate seize.</li>
-                <li>In a heat-safe bowl, gently melt the dark chocolate (microwave in short bursts or over a double boiler) until smooth and glossy.</li>
-                <li>Stir in the dark syrup or honey if using, mixing until fully combined.</li>
-                <li>Fold the dry pomegranate seeds into the melted chocolate so they’re well coated.</li>
-                <li>Use a spoon to drop small clusters onto a parchment-lined tray, or roll a few seeds at a time into “pearls.”</li>
-                <li>Finish with a light sprinkle of flaky sea salt on top of each cluster or pearl.</li>
-                <li>Chill until set, then serve cold. Keep refrigerated until you’re ready to plate.</li>
-              </ul>
-
-              <p class="recipe-footer-note">
-                For events, you can easily double or triple this recipe. Make several small trays so the chocolate sets quickly,
-                and serve within 24 hours for the best crunchy “pop.” Pairs beautifully with Blood Moon Punch,
-                Cerberus Hot Chocolate, or Obsidian Cold Brew.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About / Lore -->
-    <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-eyebrow">Lore of the Underworld Kitchen</div>
-          <h2 class="section-title">About the Hound of Hades</h2>
-          <p class="section-subtitle">
-            A food truck born from flame, shadow, and a long-standing dream — built for those who crave something a little darker, a little witchier, and a lot more flavorful.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-box">
-            <span class="about-label">The Infernal Founder</span>
-            <p>
-              Hades Wicked Bites is helmed by <strong>The Hound of Hades</strong> —
-              guardian of flavor, keeper of the ember flame, and alchemist of wicked comfort food.
-            </p>
-            <p style="margin-top:0.5rem;">
-              With a love for witchy aesthetics, fantasy worlds, and soul-warming food, the Underworld Kitchen balances
-              <strong>dark, immersive storytelling</strong> with <strong>real-world accessibility</strong>:
-              kid-friendly options, allergy-aware offerings, and flexible heat levels for every mortal.
-            </p>
-            <div class="about-quote">
-              “Everyone deserves a little magic with their meal — whether they walk in darkness or in daylight.”
-            </div>
-          </div>
-
-          <div class="about-highlight">
-            <span class="about-label">What the Underworld Stands For</span>
-            <p>
-              ✶ <strong>All are welcome at the cauldron.</strong> From picky eaters and cautious kids to spice fiends and goth foodies — there is a path through the Underworld for you.
-            </p>
-            <p style="margin-top:0.4rem;">
-              ✶ <strong>Allergy-aware by design.</strong> Key items can be made gluten-friendly, dairy-free, or vegan-friendly, with clear communication at the window.
-            </p>
-            <p style="margin-top:0.4rem;">
-              ✶ <strong>Story-driven, heart-led food.</strong> Every dish, name, and visual is part of a living mythology built to be fun, immersive, and unforgettable.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact / Summon -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-eyebrow">Summon the Underworld Kitchen</div>
-          <h2 class="section-title">Bookings & General Inquiries</h2>
-          <p class="section-subtitle">
-            Use the calendar to claim your date in the Underworld. For everything else, reach out directly to the Hound of Hades.
-          </p>
-        </div>
-
-        <div class="summon-grid">
-          <!-- Calendar -->
-          <div class="summon-calendar">
-            <h4>Claim Your Date in the Underworld</h4>
-            <p class="form-helper">
-              Choose your time directly on the calendar. Once confirmed, you’ll receive an email from our booking system.
-            </p>
-            <div class="calendar-wrap">
-              <!-- Setmore booking URL -->
-              <iframe
-                src="https://hadeswickedbites.setmore.com/houndofhades"
-                loading="lazy"
-                scrolling="yes"
-                frameborder="0"
-                title="Hades Wicked Bites booking calendar">
-              </iframe>
-            </div>
-          </div>
-
-          <!-- Simple contact card (email-only inquiries) -->
-          <aside class="contact-card">
-            <div class="contact-card-title">General Inquiries</div>
-            <p>
-              For questions, collaborations, press, or other mischief that isn’t a booking,
-              send a message through one of these gates to the Underworld:
-            </p>
-            <ul class="contact-card-list">
-              <li>
-                <strong>Website:</strong>
-                <a href="https://hound0fhades.github.io/Hades-Wicked-Bites" target="_blank">
-                  hound0fhades.github.io/Hades-Wicked-Bites
-                </a>
-              </li>
-              <li>
-                <strong>Email:</strong>
-                <a href="mailto:HadesWickedBites@outlook.com">HadesWickedBites@outlook.com</a>
-              </li>
-              <li>
-                <strong>Phone:</strong>
-                <a href="tel:15409448898">540-944-8898</a>
-              </li>
-              <li>
-                <strong>Instagram:</strong>
-                <a href="https://www.instagram.com/hadeswickedbites?igsh=Zjh0MnlsdG41ZXV5" target="_blank">@HadesWickedBites</a>
-              </li>
-              <li>
-                <strong>TikTok:</strong>
-                <a href="https://www.tiktok.com/@hadeswickedbites" target="_blank">@HadesWickedBites</a>
-              </li>
-            </ul>
-            <p class="contact-note">
-              Bookings live on the calendar so your date is properly claimed in the Underworld.  
-              Messages here are for conversation, not reservations.
-            </p>
-          </aside>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-row">
-        <div>© <span id="year"></span> Hades Wicked Bites. All rights reserved.</div>
-        <div class="footer-links">
-          <span>Eat wickedly.</span>
-          <span>Feast in the Underworld.</span>
-        </div>
-      </div>
-    </div>
-    <script>
-      window.addEventListener('load', function () {
-        // year
-        var yearSpan = document.getElementById('year');
-        if (yearSpan) {
-          yearSpan.textContent = new Date().getFullYear();
-        }
-        // hide loader
-        document.body.classList.add('loaded');
-        // reveal header
-        var header = document.querySelector('.hb-header');
-        if (header) {
-          header.classList.add('revealed');
-        }
-      });
-
-      // shrink header on scroll
-      window.addEventListener('scroll', function () {
-        const header = document.querySelector('.hb-header');
-        if (!header) return;
-        header.classList.toggle('scrolled', window.scrollY > 20);
-      });
-
-      // Secret menu hover / tap logic
-      (function () {
-        const star = document.getElementById('secretStar');
-        const secret = document.getElementById('secretMenu');
-        if (!star || !secret) return;
-
-        let hideTimeout;
-
-        function showSecret() {
-          clearTimeout(hideTimeout);
-          secret.classList.add('visible');
-          star.classList.add('active');
-          secret.setAttribute('aria-hidden', 'false');
-        }
-
-        function scheduleHide() {
-          hideTimeout = setTimeout(function () {
-            secret.classList.remove('visible');
-            star.classList.remove('active');
-            secret.setAttribute('aria-hidden', 'true');
-          }, 200);
-        }
-
-        // Hover support (desktop)
-        star.addEventListener('mouseenter', showSecret);
-        star.addEventListener('mouseleave', scheduleHide);
-        secret.addEventListener('mouseenter', showSecret);
-        secret.addEventListener('mouseleave', scheduleHide);
-
-        // Tap/click support (mobile)
-        star.addEventListener('click', function (e) {
-          e.preventDefault();
-          const visible = secret.classList.toggle('visible');
-          star.classList.toggle('active', visible);
-          secret.setAttribute('aria-hidden', String(!visible));
-        });
-      })();
-
-      // Seasonal callout logic + rotating titles
-      (function () {
-        const now = new Date();
-        const month = now.getMonth(); // 0 = Jan
-
-        const seasonCallout = document.getElementById("seasonCallout");
-        const seasonMessage = seasonCallout ? seasonCallout.querySelector(".season-message") : null;
-        const seasonTitleEl = seasonCallout ? seasonCallout.querySelector(".season-title") : null;
-
-        if (!seasonCallout || !seasonMessage || !seasonTitleEl) return;
-
-        // Rotate between your three favorite titles
-        const seasonTitles = [
-          "🔥 Seasonal Flames Active 🔥",
-          "Seasonal Offerings from the Deep",
-          "The Season Hungers…"
-        ];
-
-        const randomIndex = Math.floor(Math.random() * seasonTitles.length);
-        seasonTitleEl.textContent = seasonTitles[randomIndex];
-
-        let seasonContent = "";
-
-        if (month >= 5 && month <= 8) {
-          // JUNE — SEPT (Summer)
-          seasonContent = `☀️ <strong>Summer in Tartarus</strong><br>
-            Try our Obsidian Cold Brew while the fires burn hottest.`;
-        } else if (month === 10 || month === 11 || month === 0 || month === 1) {
-          // OCT — JAN (Fall/Winter)
-          seasonContent = `🍁 <strong>Winter in the Underworld</strong><br>
-            Warm yourself with Cerberus Hot Chocolate — three heads, triple cocoa fury.`;
-        } else {
-          // Spring / in-between
-          seasonContent = `✨ <strong>Soul-Stirring Transition</strong><br>
-            Limited availability — ask The Hound of Hades what’s brewing.`;
-        }
-
-        seasonMessage.innerHTML = seasonContent;
-      })();
-    </script>
-  </footer>
 </body>
 </html>
